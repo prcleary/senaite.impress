@@ -57,7 +57,7 @@ class IImpressControlPanel(Interface):
         title=_(u"Default Template"),
         description=_("Initially loaded report template"),
         vocabulary="senaite.impress.vocabularies.Templates",
-        default="senaite.impress:MultiDefault.pt",
+        default="senaite.impress:AIMSMultiDefault.pt",
         required=True,
     )
 
