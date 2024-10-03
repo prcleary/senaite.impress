@@ -40,7 +40,7 @@
     <div>Patient MRN</div>
   </td>
   <td>
-    <a tal:content="model/MedicalRecordNumber/value"/>
+    <a tal:on-error="nothing" tal:content="model/MedicalRecordNumber/value"/>
   </td>
   </tr>
   <tr>
@@ -48,7 +48,7 @@
     <div>Patient Full Name</div>
   </td>
   <td>
-    <a tal:content="model/getPatientFullName"/>
+    <a tal:on-error="nothing" tal:content="model/getPatientFullName"/>
   </td>
   </tr>
   <tr>
@@ -83,7 +83,7 @@
     <div>Patient Address</div>
   </td>
   <td>
-    <a tal:content="model/PatientAddress"/>
+    <a tal:on-error="nothing" tal:content="model/PatientAddress"/>
   </td>
   </tr>
   </table>
