@@ -56,7 +56,7 @@
   <div>Age</div>
   </td>
   <td>
-  <a tal:content="python: '%s years, %s months' % (model.getAge().years or '??', model.getAge().months or '??')"/>
+  <a tal:on-error="nothing" tal:content="python: '%s years, %s months' % (model.getAge().years, model.getAge().months)"/>
   </td>
   </tr>
   <tr>
@@ -64,8 +64,8 @@
     <div>Patient Date Of Birth</div>
   </td>
   <td>
-    <a tal:content="python: model.getDateOfBirth()[0].strftime('%d/%m/%Y') or '??'" />
-    <a tal:condition="python: model.getDateOfBirthEstimated()" tal:content="python: '(NB: estimated from age)'"/>
+    <a tal:on-error="nothing" tal:content="python: model.getDateOfBirth()[0].strftime('%d/%m/%Y')" />
+    <a tal:on-error="nothing" tal:condition="python: model.getDateOfBirthEstimated()" tal:content="python: '(NB: estimated from age)'"/>
   </td>
   </tr>
   <tr>
@@ -75,7 +75,7 @@
   <td>
     <a tal:condition="python: model.Sex == 'm'" tal:content="python: 'Male'" />
     <a tal:condition="python: model.Sex == 'f'" tal:content="python: 'Female'" />
-    <a tal:condition="python: model.Sex == ''" tal:content="python: '??'" />
+    <a tal:condition="python: model.Sex == ''" tal:content="python: 'Unspecified' />
   </td>
   </tr>
   <tr>
