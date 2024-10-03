@@ -1,0 +1,117 @@
+<tal:report define="model python:view.model;">
+
+  <!-- REPORT CONTROLS -->
+  <tal:t replace="structure python:view.render_controls(context, **options)" />
+
+  <!-- REPORT JS -->
+  <tal:t replace="structure python:view.render_js(context, **options)" />
+
+  <!-- REPORT CSS -->
+  <tal:t replace="structure python:view.render_css(context, **options)" />
+
+  <!-- NEW REPORT HEADER -->
+  <!-- Header Table -->
+  <div class="row section-header no-gutters">
+  <!-- Header Left -->
+  <div class="col-2 text-left">
+  <img class="logo image-fluid" style="object-fit:contain; height:60px; margin-top:0px; margin-left:15px" src="https://subdomain.domain.tld/site/site_logo.png" alt="Site logo" title="Site logo">
+  </img>
+  </div>
+  <div class="col-10 text-left">
+  <!-- Header Right -->
+  <h1><strong>The Title of the Laboratory</strong></h1>
+  <h1>Analysis Report</h1>
+  </div>
+  </div>
+
+  <!-- REPORT INFO -->
+  <tal:t replace="structure python:view.render_info(context, **options)" />
+
+  <!-- REPORT ALERTS -->
+  <tal:t replace="structure python:view.render_alerts(context, **options)" />
+
+  <!-- NEW PATIENT INFO -->
+    <div class="row section-summary no-gutters">
+  <div class="w-100">
+  <h1>Patient Information</h1>
+  <table class="table table-sm table-condensed">
+  <tr>
+  <td class="label" i18n:translate="">
+    <div>Patient MRN</div>
+  </td>
+  <td>
+    <a tal:content="model/MedicalRecordNumber/value"/>
+  </td>
+  </tr>
+  <tr>
+  <td class="label" i18n:translate="">
+    <div>Patient Full Name</div>
+  </td>
+  <td>
+    <a tal:content="model/getPatientFullName"/>
+  </td>
+  </tr>
+  <tr>
+  <td class="label" i18n:translate="">
+  <div>Age</div>
+  </td>
+  <td>
+  <a tal:content="python: '%d years, %d months' % (model.getAge().years, model.getAge().months)"/>
+  </td>
+  </tr>
+  <tr>
+  <td class="label" i18n:translate="">
+    <div>Patient Date Of Birth</div>
+  </td>
+  <td>
+    <a tal:content="python: model.getDateOfBirth()[0].strftime('%d/%m/%Y')" />
+    <a tal:condition="python: model.getDateOfBirthEstimated()" tal:content="python: '(NB: estimated from age)'"/>
+  </td>
+  </tr>
+  <tr>
+  <td class="label" i18n:translate="">
+    <div>Patient Sex</div>
+  </td>
+  <td>
+    <a tal:condition="python: model.Sex == 'm'" tal:content="python: 'Male'" />
+    <a tal:condition="python: model.Sex == 'f'" tal:content="python: 'Female'" />
+    <a tal:condition="python: model.Sex == ''" tal:content="python: 'Unspecified'" />
+  </td>
+  </tr>
+  <tr>
+  <td class="label" i18n:translate="">
+    <div>Patient Address</div>
+  </td>
+  <td>
+    <a tal:content="model/PatientAddress"/>
+  </td>
+  </tr>
+  </table>
+  </div>
+  </div>
+
+  <!-- REPORT RESULTS -->
+  <tal:t replace="structure python:view.render_results(context, **options)" />
+
+  <!-- RESULTS INTERPRETATION -->
+  <tal:t replace="structure python:view.render_interpretations(context, **options)" />
+
+  <!-- SAMPLE REMARKS -->
+  <tal:t replace="structure python:view.render_remarks(context, **options)" />
+
+  <!-- REPORT SUMMARY -->
+  <tal:t replace="structure python:view.render_summary(context, **options)" />
+
+  <!-- REPORT ATTACHMENTS -->
+  <tal:t replace="structure python:view.render_attachments(context, **options)" />
+
+  <!-- REPORT SIGNATURES -->
+  <tal:t replace="structure python:view.render_signatures(context, **options)" />
+
+  <!-- REPORT DISCREETER -->
+  <tal:t replace="structure python:view.render_discreeter(context, **options)" />
+
+  <!-- REPORT FOOTER -->
+  <tal:t replace="structure python:view.render_footer(context, **options)" />
+
+</tal:report>
