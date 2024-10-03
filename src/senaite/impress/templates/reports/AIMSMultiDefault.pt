@@ -75,7 +75,7 @@
   <td>
     <a tal:condition="python: model.Sex == 'm'" tal:content="python: 'Male'" />
     <a tal:condition="python: model.Sex == 'f'" tal:content="python: 'Female'" />
-    <a tal:condition="python: model.Sex == ''" tal:content="python: 'Unspecified' />
+    <a tal:condition="python: model.Sex == ''" tal:content="python: 'Unspecified'" />
   </td>
   </tr>
   <tr>
