@@ -114,4 +114,17 @@
   <!-- REPORT FOOTER -->
   <tal:t replace="structure python:view.render_footer(context, **options)" />
 
+  <div style="font-size: 0.8em; color: #555; line-height: 1.4; margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px;">
+      <strong>Disclaimer:</strong> This laboratory report is intended for use by healthcare professionals. All results should be interpreted in conjunction with the patient's clinical history, symptoms, and other diagnostic information.
+      <br><br>
+      <strong>Limitations and Accuracy:</strong> While every effort is made to ensure the accuracy of test results, laboratory testing is subject to potential <strong>pre-analytical, analytical, and post-analytical errors</strong>. These may include sample collection or handling issues, analytical variability, or reporting inaccuracies.
+      <br><br>
+      <strong>False Results:</strong> The presence of false positive or false negative results is a recognized limitation of laboratory testing. Such occurrences are inherent risks of complex diagnostic procedures and should not be interpreted as negligence.
+      <br><br>
+      <strong>Repeat Testing:</strong> If test results are unclear, unexpected, or inconclusive, a repeat test can be requested within <strong>24 hours</strong> at no additional cost. Repeat testing requests must be accompanied by relevant clinical notes and details of the clinical ambiguity or suspected discordance.
+      <br><br>
+      <strong>Clinical Correlation:</strong> Laboratory results are only part of the diagnostic process. They must be interpreted alongside the patient's clinical presentation, medical history, and other diagnostic investigations.
+      <br><br>
+      <strong>Confidentiality and Data Protection:</strong> This report contains confidential patient information. It is intended solely for the authorized recipient. Unauthorized use, disclosure, or distribution is prohibited.
+  </div>
 </tal:report>
