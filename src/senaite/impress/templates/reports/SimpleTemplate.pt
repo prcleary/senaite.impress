@@ -1,6 +1,7 @@
-<tal:report define="model python:view.model;"
+<tal:report
 i18n:domain="senaite.impress"
-define="collection python:view.collection;
+define="define="model python:view.model;
+collection python:view.collection;
 laboratory view/laboratory;
 accredited_symbol string:★;
 outofrange_symbol string:⚠;
