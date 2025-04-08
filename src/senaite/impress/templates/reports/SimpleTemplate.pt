@@ -28,6 +28,16 @@ font-family: Arial, sans-serif;
 font-size: 10pt;
 line-height: 1.4;
 }
+h2 {
+font-family: Arial, sans-serif;
+font-size: 10pt;
+line-height: 1.4;
+}
+h3 {
+font-family: Arial, sans-serif;
+font-size: 10pt;
+line-height: 1.4;
+}
 body {
 font-family: Arial, sans-serif;
 font-size: 10pt;
@@ -81,11 +91,16 @@ background-color: #f9f9f9;
 .page-break {
 page-break-after: always;
 }
+.avoid-break {
+page-break-inside: avoid;
+}
 .lab-address {
 text-align: center;
 margin-bottom: 10px;
 }
 @page {
+size: A4;
+margin: 1cm;
 @bottom-right {
 vertical-align: top;
 margin-top: 2mm;
@@ -105,32 +120,34 @@ Muzaffarabad, Azad Kashmir, Pakistan
 </div>
 
 <div class="patient-info">
-<table>
+<table class="table table-sm table-condensed">
 <tr>
-<td>Patient MRN:  <a tal:on-error="nothing" tal:content="model/MedicalRecordNumber/value"/></td>
-<td><a tal:on-error="nothing" tal:content="model/getPatientFullName"/></td>
+<td>MRN: <a tal:on-error="nothing" tal:content="model/MedicalRecordNumber/value"/></td>
+<td>Full Name: <a tal:on-error="nothing" tal:content="model/getPatientFullName"/></td>
+</tr>
+<tr>
 <td>
 Age/Gender:  <a tal:on-error="nothing" tal:content="python: '%s years, %s months' % (model.getAge().years, model.getAge().months)"/> /  <a tal:condition="python: model.Sex == 'm'" tal:content="python: 'Male'" />
-    <a tal:condition="python: model.Sex == 'f'" tal:content="python: 'Female'" />
-    <a tal:condition="python: model.Sex == ''" tal:content="python: 'Unspecified'" />
-    </td>
+<a tal:condition="python: model.Sex == 'f'" tal:content="python: 'Female'" />
+<a tal:condition="python: model.Sex == ''" tal:content="python: 'Unspecified'" />
+</td>
+<td>
+Address: <a tal:on-error="nothing" tal:content="model/PatientAddress"/>
+</td>
 </tr>
 <tr>
-<td>Visit Date: 03-Apr-2025 6:55PM</td>
-<td>CNIC/PP No:</td>
-<td>Last Results: Report Date: 03-Apr-2025 10:10PM</td>
+<td>
+<a tal:on-error="nothing" tal:content="python: model.getDateOfBirth()[0].strftime('%d/%m/%Y')" />
+<a tal:on-error="nothing" tal:condition="python: model.getDateOfBirthEstimated()" tal:content="python: '(NB: estimated from age)'"/>
+</td>
 </tr>
 <tr>
-<td>Ref.By: Self</td>
-<td></td>
-</tr>
-<tr>
-<td>Ref.No:</td>
-<td></td>
+<td>Sample ID: tal:replace="model/getId"</td>
+<td>CNIC:</td>
+<td>Date of sample: </td>
 </tr>
 </table>
 </div>
-
 
 <!-- REPORT RESULTS -->
 <tal:t replace="structure python:view.render_results(context, **options)" />
