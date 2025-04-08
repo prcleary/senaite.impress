@@ -1,4 +1,18 @@
 <tal:report define="model python:view.model;">
+i18n:domain="senaite.impress"
+define="collection python:view.collection;
+laboratory view/laboratory;
+accredited_symbol string:★;
+outofrange_symbol string:⚠;
+footer python:view.get_footer_text();
+report_options python:options.get('report_options', {});
+attachments_per_row python:int(report_options.get('attachments_per_row', 2));
+attachments_per_row python:attachments_per_row<1 and 1 or attachments_per_row;
+page_width options/page_width|nothing;
+page_height options/page_height|nothing;
+content_width options/content_width|nothing;
+content_height options/content_height|nothing;">
+
 <!-- REPORT CONTROLS -->
 <tal:t replace="structure python:view.render_controls(context, **options)" />
 
@@ -6,6 +20,7 @@
 <tal:t replace="structure python:view.render_js(context, **options)" />
 
 <!-- REPORT CSS -->
+<tal:css>
 <style>
 body {
 font-family: Arial, sans-serif;
@@ -64,11 +79,19 @@ page-break-after: always;
 text-align: center;
 margin-bottom: 10px;
 }
+@page {
+@bottom-right {
+vertical-align: top;
+margin-top: 2mm;
+font-size: 9pt;
+content: "<tal:t i18n:translate=''>Page</tal:t> " counter(page) " <tal:t i18n:translate=''>of</tal:t> " counter(pages);
+}
+}
 </style>
-<!-- Page 1 -->
+</tal:css>
 
 <div class="header">
-<h2>ABBAS INSTITUTE OF MEDICAL SCIENCES PATHOLOGY LABORATORY</h2>
+<h3>ABBAS INSTITUTE OF MEDICAL SCIENCES PATHOLOGY LABORATORY</h3>
 </div>
 
 <div class="lab-address">
@@ -108,58 +131,8 @@ Muzaffarabad, Azad Kashmir, Pakistan
 
 <div class="report-subtitle">Complete Blood Picture</div>
 
-<table class="results-table">
-<thead>
-<tr>
-<th>Test</th>
-<th>03-Apr-25<br>2564-01-01194</th>
-<th>19:00:42</th>
-<th>23:00:11</th>
-<th>13:30:27</th>
-<th>21:00:11</th>
-<th>18:00:22</th>
-<th>Reference Ranges</th>
-<th>Unit</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>WBC Count</td>
-<td>9,350</td>
-<td>9630</td>
-<td>11470</td>
-<td></td>
-<td></td>
-<td></td>
-<td>4000 - 11,000</td>
-<td>/mm3</td>
-</tr>
-<tr>
-<td>RBC Count</td>
-<td>4.28</td>
-<td>4.22</td>
-<td>4.44</td>
-<td></td>
-<td></td>
-<td></td>
-<td>3.8-4.8</td>
-<td>mil/mm3</td>
-</tr>
-<!-- More rows for other hematology tests -->
-<tr>
-<td>Haemoglobin</td>
-<td>11.2</td>
-<td>9.9</td>
-<td>10.3</td>
-<td></td>
-<td></td>
-<td></td>
-<td>12.0 - 15.0</td>
-<td>g/dL</td>
-</tr>
-<!-- Continue with all hematology tests -->
-</tbody>
-</table>
+<!-- REPORT RESULTS -->
+<tal:t replace="structure python:view.render_results(context, **options)" />
 
 <div class="report-subtitle">Differential Count</div>
 
