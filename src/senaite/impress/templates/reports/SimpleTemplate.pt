@@ -137,13 +137,12 @@ Address: <a tal:on-error="nothing" tal:content="model/PatientAddress"/>
 </tr>
 <tr>
 <td>
-<a tal:on-error="nothing" tal:content="python: model.getDateOfBirth()[0].strftime('%d/%m/%Y')" />
+Date of Birth: <a tal:on-error="nothing" tal:content="python: model.getDateOfBirth()[0].strftime('%d/%m/%Y')" />
 <a tal:on-error="nothing" tal:condition="python: model.getDateOfBirthEstimated()" tal:content="python: '(NB: estimated from age)'"/>
 </td>
 </tr>
 <tr>
-<td>Sample ID: tal:replace="model/getId"</td>
-<td>CNIC:</td>
+<td>Sample ID: <a tal:replace="model/getId"/></td>
 <td>Date of sample: </td>
 </tr>
 </table>
