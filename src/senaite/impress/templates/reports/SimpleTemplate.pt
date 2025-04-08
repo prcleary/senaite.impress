@@ -1,4 +1,4 @@
-<tal:report define="model python:view.model;">
+<tal:report define="model python:view.model;"
 i18n:domain="senaite.impress"
 define="collection python:view.collection;
 laboratory view/laboratory;
@@ -91,7 +91,7 @@ content: "<tal:t i18n:translate=''>Page</tal:t> " counter(page) " <tal:t i18n:tr
 </tal:css>
 
 <div class="header">
-<h3>ABBAS INSTITUTE OF MEDICAL SCIENCES PATHOLOGY LABORATORY</h3>
+<strong>ABBAS INSTITUTE OF MEDICAL SCIENCES PATHOLOGY LABORATORY</strong>
 </div>
 
 <div class="lab-address">
@@ -102,15 +102,13 @@ Muzaffarabad, Azad Kashmir, Pakistan
 <table>
 <tr>
 <td>Patient MRN:  <a tal:on-error="nothing" tal:content="model/MedicalRecordNumber/value"/></td>
+<td><a tal:on-error="nothing" tal:content="model/getPatientFullName"/></td>
+<td>
+Age/Gender:  <a tal:on-error="nothing" tal:content="python: '%s years, %s months' % (model.getAge().years, model.getAge().months)"/> /  <a tal:condition="python: model.Sex == 'm'" tal:content="python: 'Male'" />
+    <a tal:condition="python: model.Sex == 'f'" tal:content="python: 'Female'" />
+    <a tal:condition="python: model.Sex == ''" tal:content="python: 'Unspecified'" />
+    </td>
 <td>Visit Date: 03-Apr-2025 6:55PM</td>
-</tr>
-<tr>
-<td>Ms. Tayyaba Noreen</td>
-<td>Test Name:</td>
-</tr>
-<tr>
-<td>Age/Gender: 48 yr(s) / F</td>
-<td>Results: Final Report - Page 1 of 2</td>
 </tr>
 <tr>
 <td>CNIC/PP No:</td>
@@ -127,100 +125,18 @@ Muzaffarabad, Azad Kashmir, Pakistan
 </table>
 </div>
 
-<div class="report-title">Hematology</div>
-
-<div class="report-subtitle">Complete Blood Picture</div>
 
 <!-- REPORT RESULTS -->
 <tal:t replace="structure python:view.render_results(context, **options)" />
 
-<div class="report-subtitle">Differential Count</div>
+<!-- RESULTS INTERPRETATION -->
+<tal:t replace="structure python:view.render_interpretations(context, **options)" />
 
-<table class="results-table">
-<!-- Differential count table rows -->
-</table>
+  <div style="font-size: 0.8em; color: #555; line-height: 1.4; margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px;">
+  <strong>Disclaimer:</strong> This report is intended for healthcare professionals and must be interpreted in the context of the patient's clinical presentation, history, and other diagnostic information.
+  <strong>Accuracy and Limitations:</strong> While every effort is made to ensure accuracy, laboratory testing may be affected by <strong>pre-analytical, analytical, and post-analytical factors</strong>, including sample handling and technical variability. False positives and negatives are possible and do not imply negligence.
+  <strong>Repeat Testing:</strong> If results are unclear or unexpected, repeat testing may be requested within <strong>24–48 hours</strong> at no additional cost, with accompanying clinical notes explaining the reason.
+  <strong>Confidentiality:</strong> This report contains confidential patient data and is intended only for the authorized recipient. Unauthorized use or disclosure is prohibited.
+  </div>
 
-<div class="report-subtitle">Absolute Count</div>
-
-<table class="results-table">
-<!-- Absolute count table rows -->
-</table>
-
-<div class="comments">
-<strong>Comments:</strong><br>
-Peripheral smear reveals Normocytic, normochromic Anaemia. Platelets are adequate.
-Serum Iron, TBC and Fertilm level is suggested.
-Disclaimer: Every diagnostic test has scientific acceptable technology or technique
-based limitations of uncertainty of measurement; false positive or false negative
-and so do not fall under the domain of negligence. In case of any such scenario,
-we offer free repeat of test within 24-48 hours.
-</div>
-
-<div class="footer">
-<p>Note: This is digitally verified report and does not require manual signature.</p>
-<p>Printed By: SYSTEM @ 03-Apr-2025 10:37:04 PM</p>
-<p>System Verified Report</p>
-</div>
-
-<!-- Page Break for Page 2 -->
-<div class="page-break"></div>
-
-<!-- Page 2 -->
-<div class="header">
-<h2>IDC IMAGING & DIAGNOSTIC SERVICES</h2>
-</div>
-
-<div class="lab-address">
-Ground Floor, Zanjar Arcade, Plot No. 01, D-12 Markaz, Islamabad<br>
-UAN: 03 111 000 432, 051 111 000 432
-</div>
-
-<div class="patient-info">
-<table>
-<tr>
-<td>MRN/IPIN: D-6-44693 / 2504-01-011994</td>
-<td>Visit Date: 03-Apr-2025 6:55PM</td>
-</tr>
-<tr>
-<td>Ms. Tayyaba Noreen</td>
-<td>Test Name:</td>
-</tr>
-<tr>
-<td>Age/Gender: 48 yr(s) / F</td>
-<td>Results: Final Report - Page 2 of 2</td>
-</tr>
-<tr>
-<td>CNIC/PP No:</td>
-<td>Last Results: Report Date: 03-Apr-2025 10:10PM</td>
-</tr>
-</table>
-</div>
-
-<div class="report-title">Chemistry</div>
-
-<table class="results-table">
-<thead>
-<tr>
-<th>Test</th>
-<th>03-Apr-25<br>2564-01-01194</th>
-<th>19:00:42</th>
-<th>23:00:11</th>
-<th>18:00:22</th>
-<th>Reference Ranges</th>
-<th>Unit</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Uric Acid</td>
-<td>9.0</td>
-<td>8.3</td>
-<td></td>
-<td></td>
-<td>2.4 - 6.2</td>
-<td>mg/dL</td>
-</tr>
-<!-- More chemistry test rows -->
-</tbody>
-</table>
 </tal:report>
