@@ -70,7 +70,7 @@
   </tr>
   <tr>
   <td class="label" i18n:translate="">
-    <div>Patient Sex</div>
+    <div>Patient Gender</div>
   </td>
   <td>
     <a tal:condition="python: model.Sex == 'm'" tal:content="python: 'Male'" />
