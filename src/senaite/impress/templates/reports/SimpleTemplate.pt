@@ -122,8 +122,8 @@ Muzaffarabad, Azad Kashmir, Pakistan
 <div class="patient-info">
 <table class="table table-sm table-condensed">
 <tr>
-<td>MRN: <a tal:on-error="nothing" tal:content="model/MedicalRecordNumber/value"/></td>
 <td>Full Name: <a tal:on-error="nothing" tal:content="model/getPatientFullName"/></td>
+<td>MRN: <a tal:on-error="nothing" tal:content="model/MedicalRecordNumber/value"/></td>
 </tr>
 <tr>
 <td>
@@ -140,10 +140,10 @@ Address: <a tal:on-error="nothing" tal:content="model/PatientAddress"/>
 Date of Birth: <a tal:on-error="nothing" tal:content="python: model.getDateOfBirth()[0].strftime('%d/%m/%Y')" />
 <a tal:on-error="nothing" tal:condition="python: model.getDateOfBirthEstimated()" tal:content="python: '(NB: estimated from age)'"/>
 </td>
+<td>Date of sample: </td>
 </tr>
 <tr>
 <td>Sample ID: <a tal:replace="model/getId"/></td>
-<td>Date of sample: </td>
 </tr>
 </table>
 </div>
