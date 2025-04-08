@@ -1,0 +1,253 @@
+<tal:report define="model python:view.model;">
+<!-- REPORT CONTROLS -->
+<tal:t replace="structure python:view.render_controls(context, **options)" />
+
+<!-- REPORT JS -->
+<tal:t replace="structure python:view.render_js(context, **options)" />
+
+<!-- REPORT CSS -->
+<style>
+body {
+font-family: Arial, sans-serif;
+font-size: 10pt;
+line-height: 1.4;
+margin: 0;
+padding: 0;
+}
+.header {
+text-align: center;
+margin-bottom: 15px;
+}
+.patient-info {
+margin-bottom: 15px;
+}
+.patient-info table {
+width: 100%;
+border-collapse: collapse;
+}
+.patient-info td {
+padding: 2px 5px;
+vertical-align: top;
+}
+.report-title {
+font-weight: bold;
+text-align: center;
+margin: 10px 0;
+}
+.results-table {
+width: 100%;
+border-collapse: collapse;
+margin-bottom: 15px;
+}
+.results-table th, .results-table td {
+border: 1px solid #ddd;
+padding: 5px;
+text-align: left;
+}
+.results-table th {
+background-color: #f2f2f2;
+}
+.footer {
+margin-top: 20px;
+font-size: 9pt;
+}
+.comments {
+margin: 15px 0;
+padding: 10px;
+border: 1px solid #ddd;
+background-color: #f9f9f9;
+}
+.page-break {
+page-break-after: always;
+}
+.lab-address {
+text-align: center;
+margin-bottom: 10px;
+}
+</style>
+<!-- Page 1 -->
+
+<div class="header">
+<h2>ABBAS INSTITUTE OF MEDICAL SCIENCES PATHOLOGY LABORATORY</h2>
+</div>
+
+<div class="lab-address">
+Muzaffarabad, Azad Kashmir, Pakistan
+</div>
+
+<div class="patient-info">
+<table>
+<tr>
+<td>Patient MRN:  <a tal:on-error="nothing" tal:content="model/MedicalRecordNumber/value"/></td>
+<td>Visit Date: 03-Apr-2025 6:55PM</td>
+</tr>
+<tr>
+<td>Ms. Tayyaba Noreen</td>
+<td>Test Name:</td>
+</tr>
+<tr>
+<td>Age/Gender: 48 yr(s) / F</td>
+<td>Results: Final Report - Page 1 of 2</td>
+</tr>
+<tr>
+<td>CNIC/PP No:</td>
+<td>Last Results: Report Date: 03-Apr-2025 10:10PM</td>
+</tr>
+<tr>
+<td>Ref.By: Self</td>
+<td></td>
+</tr>
+<tr>
+<td>Ref.No:</td>
+<td></td>
+</tr>
+</table>
+</div>
+
+<div class="report-title">Hematology</div>
+
+<div class="report-subtitle">Complete Blood Picture</div>
+
+<table class="results-table">
+<thead>
+<tr>
+<th>Test</th>
+<th>03-Apr-25<br>2564-01-01194</th>
+<th>19:00:42</th>
+<th>23:00:11</th>
+<th>13:30:27</th>
+<th>21:00:11</th>
+<th>18:00:22</th>
+<th>Reference Ranges</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WBC Count</td>
+<td>9,350</td>
+<td>9630</td>
+<td>11470</td>
+<td></td>
+<td></td>
+<td></td>
+<td>4000 - 11,000</td>
+<td>/mm3</td>
+</tr>
+<tr>
+<td>RBC Count</td>
+<td>4.28</td>
+<td>4.22</td>
+<td>4.44</td>
+<td></td>
+<td></td>
+<td></td>
+<td>3.8-4.8</td>
+<td>mil/mm3</td>
+</tr>
+<!-- More rows for other hematology tests -->
+<tr>
+<td>Haemoglobin</td>
+<td>11.2</td>
+<td>9.9</td>
+<td>10.3</td>
+<td></td>
+<td></td>
+<td></td>
+<td>12.0 - 15.0</td>
+<td>g/dL</td>
+</tr>
+<!-- Continue with all hematology tests -->
+</tbody>
+</table>
+
+<div class="report-subtitle">Differential Count</div>
+
+<table class="results-table">
+<!-- Differential count table rows -->
+</table>
+
+<div class="report-subtitle">Absolute Count</div>
+
+<table class="results-table">
+<!-- Absolute count table rows -->
+</table>
+
+<div class="comments">
+<strong>Comments:</strong><br>
+Peripheral smear reveals Normocytic, normochromic Anaemia. Platelets are adequate.
+Serum Iron, TBC and Fertilm level is suggested.
+Disclaimer: Every diagnostic test has scientific acceptable technology or technique
+based limitations of uncertainty of measurement; false positive or false negative
+and so do not fall under the domain of negligence. In case of any such scenario,
+we offer free repeat of test within 24-48 hours.
+</div>
+
+<div class="footer">
+<p>Note: This is digitally verified report and does not require manual signature.</p>
+<p>Printed By: SYSTEM @ 03-Apr-2025 10:37:04 PM</p>
+<p>System Verified Report</p>
+</div>
+
+<!-- Page Break for Page 2 -->
+<div class="page-break"></div>
+
+<!-- Page 2 -->
+<div class="header">
+<h2>IDC IMAGING & DIAGNOSTIC SERVICES</h2>
+</div>
+
+<div class="lab-address">
+Ground Floor, Zanjar Arcade, Plot No. 01, D-12 Markaz, Islamabad<br>
+UAN: 03 111 000 432, 051 111 000 432
+</div>
+
+<div class="patient-info">
+<table>
+<tr>
+<td>MRN/IPIN: D-6-44693 / 2504-01-011994</td>
+<td>Visit Date: 03-Apr-2025 6:55PM</td>
+</tr>
+<tr>
+<td>Ms. Tayyaba Noreen</td>
+<td>Test Name:</td>
+</tr>
+<tr>
+<td>Age/Gender: 48 yr(s) / F</td>
+<td>Results: Final Report - Page 2 of 2</td>
+</tr>
+<tr>
+<td>CNIC/PP No:</td>
+<td>Last Results: Report Date: 03-Apr-2025 10:10PM</td>
+</tr>
+</table>
+</div>
+
+<div class="report-title">Chemistry</div>
+
+<table class="results-table">
+<thead>
+<tr>
+<th>Test</th>
+<th>03-Apr-25<br>2564-01-01194</th>
+<th>19:00:42</th>
+<th>23:00:11</th>
+<th>18:00:22</th>
+<th>Reference Ranges</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Uric Acid</td>
+<td>9.0</td>
+<td>8.3</td>
+<td></td>
+<td></td>
+<td>2.4 - 6.2</td>
+<td>mg/dL</td>
+</tr>
+<!-- More chemistry test rows -->
+</tbody>
+</table>
+</tal:report>
