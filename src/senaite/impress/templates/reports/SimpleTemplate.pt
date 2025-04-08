@@ -23,6 +23,11 @@ content_height options/content_height|nothing;">
 <!-- REPORT CSS -->
 <tal:css>
 <style>
+h1 {
+font-family: Arial, sans-serif;
+font-size: 10pt;
+line-height: 1.4;
+}
 body {
 font-family: Arial, sans-serif;
 font-size: 10pt;
@@ -32,10 +37,10 @@ padding: 0;
 }
 .header {
 text-align: center;
-margin-bottom: 15px;
+margin-bottom: 5px;
 }
 .patient-info {
-margin-bottom: 15px;
+margin-bottom: 5px;
 }
 .patient-info table {
 width: 100%;
@@ -109,9 +114,9 @@ Age/Gender:  <a tal:on-error="nothing" tal:content="python: '%s years, %s months
     <a tal:condition="python: model.Sex == 'f'" tal:content="python: 'Female'" />
     <a tal:condition="python: model.Sex == ''" tal:content="python: 'Unspecified'" />
     </td>
-<td>Visit Date: 03-Apr-2025 6:55PM</td>
 </tr>
 <tr>
+<td>Visit Date: 03-Apr-2025 6:55PM</td>
 <td>CNIC/PP No:</td>
 <td>Last Results: Report Date: 03-Apr-2025 10:10PM</td>
 </tr>
