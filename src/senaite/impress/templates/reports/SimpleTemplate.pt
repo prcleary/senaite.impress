@@ -142,9 +142,6 @@ Date of Birth: <a tal:on-error="nothing" tal:content="python: model.getDateOfBir
 </td>
 <td>Date of sample: </td>
 </tr>
-<tr>
-<td>Sample ID: <a tal:replace="model/getId"/></td>
-</tr>
 </table>
 </div>
 
