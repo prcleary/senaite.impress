@@ -140,12 +140,7 @@ Address: <a tal:on-error="nothing" tal:content="model/PatientAddress"/>
 Date of Birth: <a tal:on-error="nothing" tal:content="python: model.getDateOfBirth()[0].strftime('%d/%m/%Y')" />
 <a tal:on-error="nothing" tal:condition="python: model.getDateOfBirthEstimated()" tal:content="python: '(NB: estimated from age)'"/>
 </td>
-<td>Date of sample: <a tal:on-error="nothing" tal:content="here/getDateSampled
-<td>Date of sample: <a tal:on-error="nothing" tal:content="here/getSamplingDate"/></td>
-<td>Date of sample: <a tal:on-error="nothing" tal:content="model/getDateSampled"/></td>
-<td>Date of sample: <a tal:on-error="nothing" tal:content="model/getSamplingDate"/></td>
-<td>Date of sample: <a tal:on-error="nothing" tal:content="python: here.toLocalizedTime(here.sample.get('SamplingDate'), long_format = True)"/></td>
-<td>Date of sample: <a tal:on-error="nothing" tal:content="python: self.context.toLocalizedTime(sample.get('SamplingDate'), long_format = True)"/></td>
+<td>Date of sample: <a tal:on-error="nothing" tal:content="python: here.toLocalizedTime(getSamplingDate(), long_format = True)"/></td>
 </tr>
 </table>
 </div>
