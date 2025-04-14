@@ -140,7 +140,7 @@ Address: <a tal:on-error="nothing" tal:content="model/PatientAddress"/>
 Date of Birth: <a tal:on-error="nothing" tal:content="python: model.getDateOfBirth()[0].strftime('%d %B %Y')" />
 <a tal:on-error="nothing" tal:condition="python: model.getDateOfBirthEstimated()" tal:content="python: '(NB: estimated from age)'"/>
 </td>
-<td>Date of sample: <a tal:on-error="nothing" tal:content="python: view.to_localized_time(model.getDateSampled(), long_format = 1, format = '%d %B %Y')"/></td>
+<td>Date of sample: <a tal:on-error="nothing" tal:content="python: view.to_localized_time(model.getDateSampled(), format = '%d %B %Y')"/></td>
 </tr>
 </table>
 </div>
